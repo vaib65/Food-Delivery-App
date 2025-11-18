@@ -1,0 +1,45 @@
+import express from "express"
+import cors from "cors"
+import dotenv from "dotenv";
+import { connectDB } from "./config/db.js";
+import foodRouter from "./routes/food.routes.js";
+import userRouter from "./routes/user.routes.js";
+import cartRouter from "./routes/cart.routes.js";
+import orderRouter from "./routes/order.routes.js";
+
+dotenv.config({
+  path: "./.env",
+});
+
+//app config
+const app = express()
+const PORT = process.env.PORT || 3000;
+
+//middleware
+app.use(express.json());
+app.use(cors());
+
+//api endpoint
+app.use("/api/food", foodRouter)
+app.use("/images", express.static('uploads'))
+app.use("/api/user", userRouter)
+app.use("/api/cart",cartRouter)
+app.use("/api/order",orderRouter)
+
+
+app.get("/", (req, res) => {
+    res.send("api working")
+})
+
+connectDB()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server is running on port: ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.log("MongoDb connection error", err);
+  });
+
+
+ 

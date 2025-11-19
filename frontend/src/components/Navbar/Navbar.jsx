@@ -4,18 +4,19 @@ import "./Navbar.css";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { StoreContext } from "../../context/StoreContext";
 
-const Navbar = ({ setShowLogin }) => {
+const Navbar = ({ setShowLogin}) => {
   const [menu, setMenu] = useState("home");
-  const { getTotalCartAmount, token, setToken } = useContext(StoreContext)
+  const { getTotalCartAmount, token, setToken,query,setQuery } = useContext(StoreContext);
   const navigate = useNavigate();
   const location = useLocation();
   const hideMenuLinks = location.pathname !== "/";
 
   const logout = () => {
-    localStorage.removeItem("token")
-    setToken("")
-    navigate('/')
-  }
+    localStorage.removeItem("token");
+    setToken("");
+    navigate("/");
+  };
+
   return (
     <div className="navbar">
       <Link to="/">
@@ -58,7 +59,18 @@ const Navbar = ({ setShowLogin }) => {
         </a>
       </ul>
       <div className="navbar-right">
-        <img src={assets.search_icon} alt="" />
+        {!hideMenuLinks && (
+          <div className="search-box">
+            <input
+              type="text"
+              placeholder="Search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value.toLowerCase())}
+            />
+            <img src={assets.search_icon_light} alt="" />
+          </div>
+        )}
+
         <div className="navbar-search-icon">
           <Link to="/cart">
             <img src={assets.basket_icon} alt="" />

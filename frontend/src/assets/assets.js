@@ -59,8 +59,16 @@ import profile_icon from './profile_icon.png'
 import bag_icon from './bag_icon.png'
 import logout_icon from './logout_icon.png'
 import parcel_icon from './parcel_icon.png'
+import search_icon_light from "./search-w.png"
+import search_icon_dark from "./search-b.png"
+import toggle_light from "./night.png"
+import toggle_dark from "./day.png"
 
 export const assets = {
+    search_icon_light,
+    search_icon_dark,
+    toggle_dark,
+    toggle_light,
     logo,
     basket_icon,
     header_img,

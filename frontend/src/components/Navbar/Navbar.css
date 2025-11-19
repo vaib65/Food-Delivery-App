@@ -1,4 +1,13 @@
 .navbar{
+    margin-top: 10px;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    z-index: 1000;
+    background: #fff;
+    height: 72px;
     padding: 20px 0px;
     display: flex;
     justify-content: space-between;
@@ -19,6 +28,31 @@
     align-items: center;
     gap: 40px;
 }
+.search-box{
+    display: flex;
+    align-items: center;
+    background: #49557e;
+    padding: 5px 20px;
+    border-radius: 50px;
+}
+.search-box input{
+    padding: 6px;
+    background:transparent;
+    border:0;
+    outline: 0;
+    color:#fff;
+    font-size: 15px;
+    max-width: 150px;
+}
+.search-box input::placeholder{
+    color:#fff
+}
+
+.search-box img{
+    width: 20px;
+    cursor: pointer;
+}
+
 .navbar button{
     background: transparent;
     font-size: 16px;
@@ -91,6 +125,8 @@
 .navbar-profile-dropdown li:hover{
     color: tomato;
 }
+
+
 
 @media (max-width:1050px){
     .navbar .logo{

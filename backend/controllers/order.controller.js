@@ -63,9 +63,9 @@ const verifyOrder = async (req, res) => {
       await orderModel.findByIdAndUpdate(orderId, { payment: true })
       res.json({success:true,message:"Paid"})
     } else {
-            await orderModel.findByIdAndDelete(orderId);
-            res.json({ success: true, message: "Not Paid" });
-    }
+      await orderModel.findByIdAndDelete(orderId);
+      res.json({ success: true, message: "Not Paid" });
+}
   } catch (error) {
       console.log(error);
       res.json({ success: false, message: "Error in payment" });
@@ -78,8 +78,8 @@ const userOrders = async (req,res) => {
     const orders = await orderModel.find({ userId: req.body.userId });
     res.json({ success: true,data:orders   })
   } catch (error) {
-          console.log(error);
-          res.json({ success: false, message: "Error getting user orders" });
+    console.log(error);
+    res.json({ success: false, message: "Error getting user orders" });
   }
 }
 
@@ -89,12 +89,12 @@ const listOrders = async (req, res) => {
     const orders = await orderModel.find({});
     res.json({success:true,data:orders})
   } catch (error) {
-       console.log(error);
-       res.json({ success: false, message: "Error listing orders" });
+    console.log(error);
+    res.json({ success: false, message: "Error listing orders" });
   }
 }
 
-//ap for updating order status
+// updating order status
 const updateStatus = async (req, res) => {
   try {
     await orderModel.findByIdAndUpdate(req.body.orderId, { status: req.body.status })

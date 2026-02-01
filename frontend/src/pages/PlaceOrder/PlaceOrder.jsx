@@ -28,7 +28,7 @@ const PlaceOrder = () => {
 
   const placeholder = async (e) => {
     e.preventDefault();
-    let orderItems = [];
+    let orderItems = [];//array of items 
     food_list.map((item) => {
       if (cartItems[item._id] > 0) {
         let itemInfo = item;

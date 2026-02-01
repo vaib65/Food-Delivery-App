@@ -14,4 +14,4 @@ export const assets ={
     parcel_icon
 }
 
-export const url = 'https://food-delivery-app-backend-hnmy.onrender.com'
+export const url = import.meta.env.VITE_API_BASE_URL || "http://localhost:4000";

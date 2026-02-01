@@ -5,7 +5,7 @@ export const StoreContext = createContext(null);
 const StoreContextProvider = (props) => {
   const [query, setQuery] = useState('');
   const [cartItems, setCartItems] = useState({});
-  const url = "https://food-delivery-app-backend-hnmy.onrender.com";
+  const url = import.meta.env.VITE_API_BASE_URL || "http://localhost:4000";
   const [token, setToken] = useState("");
   const [food_list, setFoodList] = useState([]);
 
